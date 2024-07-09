@@ -1,0 +1,10 @@
+<launch>
+    <arg name="rviz" default="true" />
+    <param name="config_path" type="string" value="/home/user/projects/easy_fastlio2_ws/src/EASY_FASTLIO2/fastlio2/config/lio.yaml"/>
+    <node pkg="fastlio2" type="lio_node" name="lio_node" output="screen"/>
+    <group if="$(arg rviz)">
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz"
+      args="-d $(find fastlio2)/rviz/fastlio.rviz" />
+    </group>
+
+</launch>
