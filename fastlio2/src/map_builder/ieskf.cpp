@@ -124,5 +124,6 @@ void IESKF::update()
     // L.block<3, 3>(0, 0) = Jr(delta.segment<3>(0));
     // L.block<3, 3>(6, 6) = Jr(delta.segment<3>(6));
     L.block<3, 3>(0, 0) = Eigen::Matrix3d::Identity() - 0.5 * Sophus::SO3d::hat(delta.segment<3>(0));
+    L.block<3, 3>(6, 6) = Eigen::Matrix3d::Identity() - 0.5 * Sophus::SO3d::hat(delta.segment<3>(6));
     m_P = L * H.inverse() * L.transpose();
 }
